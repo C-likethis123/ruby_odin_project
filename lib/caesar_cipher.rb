@@ -7,7 +7,16 @@
 97-122: "a" to "z"
 =end
 class Caesar
+    def is_punctuation(letter)
+        ascii = letter.ord
+        return ascii < 65 || (ascii > 90 && ascii < 97) || ascii > 122
+    end
+
     def get_letter_within_range(letter, shift_factor)
+        if is_punctuation(letter)
+            return letter
+        end
+
         ascii = letter.ord + shift_factor
         if (ascii > 90 && ascii < 97)
             return ((ascii % 90) + 64).chr
