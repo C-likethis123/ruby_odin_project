@@ -23,7 +23,14 @@ RSpec.describe Board do
         new_board = Board.new
         new_board.add_to_grid('X', 1)
         new_board.add_to_grid('O', 1)
-      end .to raise_error(RuntimeError, 'Grid 0 is already occupied! Choose an unoccupied grid')
+      end .to raise_error(RuntimeError, 'Grid 1 is already occupied! Choose an unoccupied grid')
+    end
+
+    it 'raises an error when attempting to add an invalid input' do
+      expect do
+        new_board = Board.new
+        new_board.add_to_grid('X', 10)
+      end .to raise_error(RuntimeError, 'The input(10) is not valid. Choose an input from the valid range (1-9)')
     end
   end
 

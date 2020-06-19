@@ -19,11 +19,13 @@ class Board
   end
 
   def add_to_grid(player_symbol, position)
-    if @board[position - 1].instance_of?(Integer)
-      @board[position - 1] = player_symbol
-    else
-      raise "Grid #{position - 1} is already occupied! Choose an unoccupied grid"
+    raise "Grid #{position} is already occupied! Choose an unoccupied grid" if @board[position - 1].instance_of?(String)
+
+    if position < 1 || position > 9
+      raise "The input(#{position}) is not valid. Choose an input from the valid range (1-9)"
     end
+
+    @board[position - 1] = player_symbol
   end
 
   def streak?
