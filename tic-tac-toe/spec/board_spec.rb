@@ -43,5 +43,12 @@ RSpec.describe Board do
       new_board.add_to_grid('X', 9)
       expect(new_board.streak?).to eq(true)
     end
+
+    it 'returns false when there is no streak' do
+      new_board = Board.new
+      new_board.add_to_grid('X', 1)
+      new_board.add_to_grid('X', 9)
+      expect(new_board.streak?).to eq(false)
+    end
   end
 end
