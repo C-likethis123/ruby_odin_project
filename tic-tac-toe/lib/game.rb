@@ -25,16 +25,22 @@ class Game
 
   def play
     loop do
-      puts "It's Player #{@current_player}'s turn"
-      @current_player.makes_move(@board)
-      if @board.streak?
-        announce_winner(@current_player)
-        break
-      elsif @board.all_grids_filled?
-        announce_draw
-        break
+      begin
+        puts "It's Player #{@current_player}'s turn"
+        @current_player.makes_move(@board)
+      rescue StandardError => e
+        puts e
+        retry
       else
-        switch_player
+        if @board.streak?
+          announce_winner(@current_player)
+          break
+        elsif @board.all_grids_filled?
+          announce_draw
+          break
+        else
+          switch_player
+        end
       end
     end
   end
