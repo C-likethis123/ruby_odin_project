@@ -13,10 +13,8 @@ RSpec.describe Player do
 
       new_player.makes_move(new_board)
       expect(new_board.board).to eq(['X', 2, 3, 4, 5, 6, 7, 8, 9])
-      $stdin = orig_stdin
 
       player_O = Player.new('O')
-      orig_stdin = $stdin
       $stdin = StringIO.new('7')
       player_O.makes_move(new_board)
       expect(new_board.board).to eq(['X', 2, 3, 4, 5, 6, 'O', 8, 9])
