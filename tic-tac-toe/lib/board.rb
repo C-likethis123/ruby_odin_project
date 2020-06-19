@@ -42,4 +42,8 @@ class Board
 
     false
   end
+
+  def all_grids_filled?
+    board.all? { |grid| grid.instance_of?(String) }
+  end
 end

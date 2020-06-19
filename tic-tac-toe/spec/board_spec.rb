@@ -51,4 +51,33 @@ RSpec.describe Board do
       expect(new_board.streak?).to eq(false)
     end
   end
+
+  describe '#all_grids_filled?' do
+    it 'returns true when all grids are filled' do
+      new_board = Board.new
+      new_board.add_to_grid('X', 1)
+      new_board.add_to_grid('O', 2)
+      new_board.add_to_grid('X', 3)
+      new_board.add_to_grid('O', 4)
+      new_board.add_to_grid('X', 5)
+      new_board.add_to_grid('O', 6)
+      new_board.add_to_grid('X', 7)
+      new_board.add_to_grid('O', 8)
+      new_board.add_to_grid('X', 9)
+      expect(new_board.all_grids_filled?).to eq(true)
+    end
+
+    it 'returns false when not all grids are filled' do
+      new_board = Board.new
+      new_board.add_to_grid('X', 1)
+      new_board.add_to_grid('O', 2)
+      new_board.add_to_grid('O', 4)
+      new_board.add_to_grid('X', 5)
+      new_board.add_to_grid('O', 6)
+      new_board.add_to_grid('X', 7)
+      new_board.add_to_grid('O', 8)
+      new_board.add_to_grid('X', 9)
+      expect(new_board.all_grids_filled?).to eq(false)
+    end
+  end
 end
