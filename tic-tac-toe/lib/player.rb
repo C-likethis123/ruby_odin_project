@@ -13,6 +13,6 @@ class Player
   end
 
   def to_s
-    return @player_symbol
+    @player_symbol
   end
 end

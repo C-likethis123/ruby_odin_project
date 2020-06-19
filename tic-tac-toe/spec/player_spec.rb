@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'player'
 require 'board'
 RSpec.describe Player do
@@ -8,7 +10,7 @@ RSpec.describe Player do
 
       orig_stdin = $stdin
       $stdin = StringIO.new('1')
-      
+
       new_player.makes_move(new_board)
       expect(new_board.board).to eq(['X', 2, 3, 4, 5, 6, 7, 8, 9])
       $stdin = orig_stdin
