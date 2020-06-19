@@ -17,6 +17,14 @@ RSpec.describe Board do
       new_board.add_to_grid('O', 7)
       expect(new_board.board).to eq(['X', 2, 3, 4, 5, 6, 'O', 8, 9])
     end
+
+    it 'raises an error when attempting to add to an occupied grid' do
+      expect do
+        new_board = Board.new
+        new_board.add_to_grid('X', 1)
+        new_board.add_to_grid('O', 1)
+      end .to raise_error(RuntimeError, 'Grid 0 is already occupied! Choose an unoccupied grid')
+    end
   end
 
   describe '#streak?' do
