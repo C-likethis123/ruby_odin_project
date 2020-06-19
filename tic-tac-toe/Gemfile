@@ -1,0 +1,27 @@
+source "https://rubygems.org"
+
+gem 'rspec', '~> 3.0'
+
+=begin
+Player:
+- what it is "X" or "O"
+- make_move
+
+Board:
+data:
+- grids
+methods:
+- has_streak
+
+Game:
+data:
+- a Board
+- two players
+
+methods:
+- is_over
+
+main loop:
+- initialize Game
+-Game.play
+=end
