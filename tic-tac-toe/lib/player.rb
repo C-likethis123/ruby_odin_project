@@ -11,4 +11,8 @@ class Player
     position = gets.to_i
     board.add_to_grid(@player_symbol, position)
   end
+
+  def to_s
+    return @player_symbol
+  end
 end
