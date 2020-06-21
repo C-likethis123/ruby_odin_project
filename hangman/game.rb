@@ -15,7 +15,7 @@ def initialize_game
 end
 
 def game_not_over
-    return $blanks.any? {|blank| blank == "_" }
+    return $blanks.any? {|blank| blank == "_" } && $tries > 0
 end
 
 def guess_incorrect(user_guess)
