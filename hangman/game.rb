@@ -14,8 +14,15 @@ class Game
     selected_word.chomp.downcase
   end
 
+  def self.last_game?
+    load_game.instance_of?(Game)
+  rescue StandardError
+    puts "Can't load the last game, starting a new game..."
+    false
+  end
+
   def save_game
-    serialized = YAML.dump(self)
+    serialized = YAML::dump(self)
     filename = 'data.txt'
     File.open(filename, 'w') do |file|
       file.puts serialized
