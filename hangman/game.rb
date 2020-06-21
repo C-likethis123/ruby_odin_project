@@ -14,6 +14,14 @@ class Game
     @blanks = ['_'] * @word.length
   end
 
+  def save_game
+    serialized = YAML.dump(self)
+    filename = 'data.txt'
+    File.open(filename, 'w') do |file|
+      file.puts serialized
+    end
+end
+
   def game_not_over
     @blanks.any? { |blank| blank == '_' } && @tries.positive?
   end
