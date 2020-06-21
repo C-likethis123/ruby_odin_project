@@ -56,9 +56,11 @@ end
   def play
     while game_not_over
       puts @blanks.to_s
-      print 'Guess a letter: '
+      print "Guess a letter, Type 'save' to save the game: "
       user_guess = gets.chomp.downcase
-      if guess_incorrect(user_guess)
+      if user_guess == 'save'
+        save_game
+      elsif guess_incorrect(user_guess)
         @tries -= 1
         puts "You've guessed wrongly! You have #{@tries} tries left\n"
       else
