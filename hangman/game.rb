@@ -54,11 +54,15 @@ class Game
     word.join('')
   end
 
+  def prompt_user_input
+    puts @blanks.to_s
+    print "Guess a letter: "
+    gets.chomp.downcase
+  end
+
   def play
     while game_not_over
-      puts @blanks.to_s
-      print "Guess a letter, Type 'save' to save the game: "
-      user_guess = gets.chomp.downcase
+      user_guess = prompt_user_input
       if user_guess == 'save'
         save_game
       elsif guess_incorrect(user_guess)
