@@ -6,13 +6,13 @@ class Game
     selected_word = contents.sample
     selected_word = contents.sample while selected_word.length < 5 || selected_word.length > 12
     selected_word.chomp.downcase
-    end
+  end
 
   def initialize_game
     @word = select_word.split(//)
     @tries = 10
     @blanks = ['_'] * @word.length
-    end
+  end
 
   def game_not_over
     @blanks.any? { |blank| blank == '_' } && @tries.positive?
@@ -45,14 +45,14 @@ class Game
         puts "You've guessed correctly!"
         replace_blanks_with_user_guess(user_guess)
       end
-      end
+    end
 
     if @tries.zero?
       puts "You lost! The word is #{join_word(@word)}"
     else
       puts "You won! The word is #{join_word(@word)}. Play again?"
     end
-    end
+  end
 end
 
 game = Game.new
