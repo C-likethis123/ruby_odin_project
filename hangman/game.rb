@@ -28,13 +28,13 @@ def replace_blanks_with_user_guess(user_guess)
 end
 
 def join_word(word)
-    return word.join('')
+  word.join('')
 end
 
 initialize_game
 
 while game_not_over
-  puts "#{$blanks}"
+  puts $blanks.to_s
   print 'Guess a letter: '
   user_guess = gets.chomp
   if guess_incorrect(user_guess)
