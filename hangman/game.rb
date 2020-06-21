@@ -31,10 +31,9 @@ while game_not_over
         $tries -= 1
         puts "You've guessed wrongly! You have #{$tries} left"
         puts "Incorrect guesses: #{$incorrect_guesses}"
+    else
+        puts "You've guessed correctly!"
+        replace_blanks_with_user_guess(user_guess)
+        print $blanks
     end
-    # else
-    #     puts "You've guessed correctly!"
-    #     replace_blanks_with_letter
-    #     print $blanks
-    # end
 end
