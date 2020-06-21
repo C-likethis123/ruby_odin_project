@@ -24,10 +24,9 @@ class Game
 
   def save_game
     serialized = Marshal.dump(self)
-    File.open(@@FILENAME, 'w') do |file|
+    File.open(FILENAME, 'w') do |file|
       file.puts serialized
     end
-    puts 'Game is saved!'
   end
 
   def self.load_game
@@ -72,6 +71,7 @@ class Game
         puts "You've guessed correctly!"
         replace_blanks_with_user_guess(user_guess)
       end
+      save_game
     end
 
     if @tries.zero?
