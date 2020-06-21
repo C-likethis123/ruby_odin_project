@@ -22,6 +22,12 @@ class Game
     end
 end
 
+  def self.load_game
+    filename = 'data.txt'
+    game = File.read(filename)
+    serialized = YAML.safe_load(game)
+  end
+
   def game_not_over
     @blanks.any? { |blank| blank == '_' } && @tries.positive?
   end
