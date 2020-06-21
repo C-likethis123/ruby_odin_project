@@ -8,47 +8,49 @@ def select_word
 end
 
 def initialize_game
-    $word = select_word.split(//)
-    $incorrect_guesses = 0
-    $tries = 5
-    $blanks = ["_"] * $word.length
+  $word = select_word.split(//)
+  $incorrect_guesses = 0
+  $tries = 5
+  $blanks = ['_'] * $word.length
 end
 
 def game_not_over
-    return $blanks.any? {|blank| blank == "_" } && $tries > 0
+  $blanks.any? { |blank| blank == '_' } && $tries > 0
 end
 
 def guess_incorrect(user_guess)
-    return $word.none? { |word| word == user_guess }
+  $word.none? { |word| word == user_guess }
 end
 
 def replace_blanks_with_user_guess(user_guess)
-    $word.each_with_index do |letter, index|
-        if letter == user_guess
-            $blanks[index] = user_guess
-        end
-    end
+  $word.each_with_index do |letter, index|
+    $blanks[index] = user_guess if letter == user_guess
+  end
+end
+
+def join_word(word)
+    return word.join('')
 end
 
 initialize_game
 
 while game_not_over
-    print $blanks
-    print "Guess a letter: "
-    user_guess = gets.chomp
-    if guess_incorrect(user_guess)
-        $incorrect_guesses += 1
-        $tries -= 1
-        puts "You've guessed wrongly! You have #{$tries} tries left"
-        puts "Incorrect guesses: #{$incorrect_guesses}"
-    else
-        puts "You've guessed correctly!"
-        replace_blanks_with_user_guess(user_guess)  
-    end
+  print $blanks
+  print 'Guess a letter: '
+  user_guess = gets.chomp
+  if guess_incorrect(user_guess)
+    $incorrect_guesses += 1
+    $tries -= 1
+    puts "You've guessed wrongly! You have #{$tries} tries left"
+    puts "Incorrect guesses: #{$incorrect_guesses}"
+  else
+    puts "You've guessed correctly!"
+    replace_blanks_with_user_guess(user_guess)
+  end
 end
 
 if $tries == 0
-    puts "You lost! The word is #{$word.join("")}"
+  puts "You lost! The word is #{join_word($word)}"
 else
-    puts "You won! Play again?"
+  puts "You won! The word is #{join_word($word)}. Play again?"
 end
