@@ -75,5 +75,15 @@ end
   end
 end
 
-game = Game.new
+if Game.last_game?
+  print 'Load the last game? (Y/N) '
+  user_input = gets.chomp
+  game = if user_input == 'Y'
+           Game.load_game
+         else
+           Game.new
+         end
+else
+  game = Game.new
+end
 game.play
