@@ -22,12 +22,13 @@ class Game
   end
 
   def save_game
-    serialized = YAML::dump(self)
+    serialized = Marshal.dump(self)
     filename = 'data.txt'
     File.open(filename, 'w') do |file|
       file.puts serialized
     end
-end
+    puts 'Game is saved!'
+  end
 
   def self.load_game
     filename = 'data.txt'
