@@ -21,6 +21,14 @@ def guess_incorrect(user_guess)
     return $word.none? { |word| word == user_guess }
 end
 
+def replace_blanks_with_user_guess(user_guess)
+    $word.each_with_index do |letter, index|
+        if letter == user_guess
+            $blanks[index] = user_guess
+        end
+    end
+end
+
 initialize_game
 puts "initialized"
 while game_not_over
