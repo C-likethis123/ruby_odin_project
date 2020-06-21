@@ -7,4 +7,10 @@ def select_word
   selected_word
 end
 
-puts select_word
+def initialize_game
+    $word = select_word
+    $incorrect_guesses = 0
+    $blanks = ["_"] * $word.length
+end
+
+print initialize_game
