@@ -8,7 +8,7 @@ def select_word
 end
 
 def initialize_game
-    $word = select_word
+    $word = select_word.split(//)
     $incorrect_guesses = 0
     $tries = 5
     $blanks = ["_"] * $word.length
