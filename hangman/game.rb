@@ -61,6 +61,14 @@ class Game
     gets.chomp.downcase
   end
 
+  def print_word_after_game
+    if @tries.zero?
+      puts "You lost! The word is #{join_word(@word)}"
+    else
+      puts "You won! The word is #{join_word(@word)}. Play again?"
+    end
+  end
+
   def play
     while game_not_over
       user_guess = prompt_user_input
@@ -73,12 +81,7 @@ class Game
       end
       save_game
     end
-
-    if @tries.zero?
-      puts "You lost! The word is #{join_word(@word)}"
-    else
-      puts "You won! The word is #{join_word(@word)}. Play again?"
-    end
+    print_word_after_game
   end
 end
 
