@@ -24,11 +24,12 @@ end
 initialize_game
 puts "initialized"
 while game_not_over
-    puts "Guess a letter: "
+    print "Guess a letter: "
     user_guess = gets.chomp
     if guess_incorrect(user_guess)
-        puts "You've guessed wrongly!"
         $incorrect_guesses += 1
+        $tries -= 1
+        puts "You've guessed wrongly! You have #{$tries} left"
         puts "Incorrect guesses: #{$incorrect_guesses}"
     end
     # else
