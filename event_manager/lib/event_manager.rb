@@ -17,14 +17,16 @@ contents.each do |row|
   name = row[:first_name]
   zipcode = clean_zipcode(row[:zipcode])
   begin
-  legislators = civic_info.representative_info_by_address(
+    legislators = civic_info.representative_info_by_address(
     address: zipcode,
     levels: 'country',
     roles: %w[legislatorUpperBody legislatorLowerBody]
-  )
-  legislators = legislators.officials
+    )
+    legislators = legislators.officials
+    legislator_names = legislators.map(&:name)
+    legislator_string = legislator_names.join(",")
   rescue StandardError
     'You can find your representatives by visiting www.commoncause.org/take-action/find-elected-officials'
 end
-  puts "#{name}: #{zipcode}, legislators: #{legislators}"
+  puts "#{name}: #{zipcode}, legislators: #{legislator_string}"
 end
