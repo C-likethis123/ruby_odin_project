@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
+FILENAME = 'data.txt'
 class Game
   def initialize
-    @@FILENAME = 'data.txt'
     @word = select_word.split(//)
     @tries = 10
     @blanks = ['_'] * @word.length
@@ -16,7 +16,9 @@ class Game
   end
 
   def self.last_game?
-    load_game.instance_of?(Game)
+    game = File.read(FILENAME)
+    game = Marshal.load(game)
+    game.instance_of?(Game)
   rescue StandardError
     puts "Can't load the last game, starting a new game..."
     false
@@ -30,9 +32,9 @@ class Game
   end
 
   def self.load_game
-    game = File.read(@@FILENAME)
+    game = File.read(FILENAME)
+    puts "Loaded game from #{FILENAME}"
     Marshal.load(game)
-    puts "Loaded game from #{@@FILENAME}"
   end
 
   def game_not_over
@@ -55,16 +57,14 @@ class Game
 
   def prompt_user_input
     puts @blanks.to_s
-    print "Guess a letter: "
+    print 'Guess a letter: '
     gets.chomp.downcase
   end
 
   def play
     while game_not_over
       user_guess = prompt_user_input
-      if user_guess == 'save'
-        save_game
-      elsif guess_incorrect(user_guess)
+      if guess_incorrect(user_guess)
         @tries -= 1
         puts "You've guessed wrongly! You have #{@tries} tries left\n"
       else
