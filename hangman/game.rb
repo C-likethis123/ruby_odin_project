@@ -36,7 +36,7 @@ initialize_game
 while game_not_over
   puts $blanks.to_s
   print 'Guess a letter: '
-  user_guess = gets.chomp
+  user_guess = gets.chomp.downcase
   if guess_incorrect(user_guess)
     $tries -= 1
     puts "You've guessed wrongly! You have #{$tries} tries left\n"
