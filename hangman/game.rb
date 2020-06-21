@@ -2,6 +2,7 @@
 
 class Game
   def initialize
+    @@FILENAME = 'data.txt'
     @word = select_word.split(//)
     @tries = 10
     @blanks = ['_'] * @word.length
@@ -23,18 +24,16 @@ class Game
 
   def save_game
     serialized = Marshal.dump(self)
-    filename = 'data.txt'
-    File.open(filename, 'w') do |file|
+    File.open(@@FILENAME, 'w') do |file|
       file.puts serialized
     end
     puts 'Game is saved!'
   end
 
   def self.load_game
-    filename = 'data.txt'
-    game = File.read(filename)
+    game = File.read(@@FILENAME)
     Marshal.load(game)
-    puts "Loaded game from #{filename}"
+    puts "Loaded game from #{@@FILENAME}"
   end
 
   def game_not_over
