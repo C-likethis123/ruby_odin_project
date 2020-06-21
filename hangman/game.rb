@@ -31,7 +31,7 @@ def replace_blanks_with_user_guess(user_guess)
 end
 
 initialize_game
-puts "initialized"
+
 while game_not_over
     print $blanks
     print "Guess a letter: "
@@ -39,11 +39,16 @@ while game_not_over
     if guess_incorrect(user_guess)
         $incorrect_guesses += 1
         $tries -= 1
-        puts "You've guessed wrongly! You have #{$tries} left"
+        puts "You've guessed wrongly! You have #{$tries} tries left"
         puts "Incorrect guesses: #{$incorrect_guesses}"
     else
         puts "You've guessed correctly!"
         replace_blanks_with_user_guess(user_guess)  
-        print $blanks
     end
+end
+
+if $tries == 0
+    puts "You lost! The word is #{$word.join("")}"
+else
+    puts "You won! Play again?"
 end
