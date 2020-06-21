@@ -33,7 +33,8 @@ class Game
   def self.load_game
     filename = 'data.txt'
     game = File.read(filename)
-    serialized = YAML.safe_load(game)
+    Marshal.load(game)
+    puts "Loaded game from #{filename}"
   end
 
   def game_not_over
