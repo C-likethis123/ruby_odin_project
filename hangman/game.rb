@@ -15,7 +15,7 @@ class Game
     end
 
   def game_not_over
-    @blanks.any? { |blank| blank == '_' } && @tries > 0
+    @blanks.any? { |blank| blank == '_' } && @tries.positive?
   end
 
   def guess_incorrect(user_guess)
@@ -47,10 +47,13 @@ class Game
       end
       end
 
-    if @tries == 0
+    if @tries.zero?
       puts "You lost! The word is #{join_word(@word)}"
     else
       puts "You won! The word is #{join_word(@word)}. Play again?"
     end
     end
 end
+
+game = Game.new
+game.play
