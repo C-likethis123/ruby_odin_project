@@ -10,7 +10,7 @@ end
 def initialize_game
   $word = select_word.split(//)
   $incorrect_guesses = 0
-  $tries = 5
+  $tries = 10
   $blanks = ['_'] * $word.length
 end
 
@@ -35,7 +35,7 @@ end
 initialize_game
 
 while game_not_over
-  print $blanks
+  puts "#{$blanks}"
   print 'Guess a letter: '
   user_guess = gets.chomp
   if guess_incorrect(user_guess)
