@@ -13,4 +13,27 @@ def initialize_game
     $blanks = ["_"] * $word.length
 end
 
-print initialize_game
+def game_not_over
+    return $blanks.any? {|blank| blank == "_" }
+end
+
+def guess_incorrect(user_guess)
+    return $word.none? { |word| word == user_guess }
+end
+
+initialize_game
+puts "initialized"
+while game_not_over
+    puts "Guess a letter: "
+    user_guess = gets.chomp
+    if guess_incorrect(user_guess)
+        puts "You've guessed wrongly!"
+        $incorrect_guesses += 1
+        puts "Incorrect guesses: #{$incorrect_guesses}"
+    end
+    # else
+    #     puts "You've guessed correctly!"
+    #     replace_blanks_with_letter
+    #     print $blanks
+    # end
+end
