@@ -3,6 +3,8 @@
 require './node.rb'
 # Represents a LinkedList data structure
 class LinkedList
+  attr_reader :head
+  attr_reader :tail
   def initialize
     @head = Node.new
     @tail = @head
@@ -28,10 +30,6 @@ class LinkedList
     end
     size_of_node
   end
-
-  attr_reader :head
-
-  attr_reader :tail
 
   def at(index)
     n = 0
@@ -92,7 +90,7 @@ end
 
 # size
 linked_list = LinkedList.new
-puts linked_list.empty?
+puts linked_list.size.zero?
 
 # append
 linked_list = LinkedList.new
@@ -122,7 +120,7 @@ puts linked_list.find(1).nil?
 # contains
 puts linked_list.contains?(2) == true
 puts linked_list.contains?(5) == true
-puts linked_list.contains?(1) == true
+puts linked_list.contains?(1) == false
 
 # pop
 linked_list.pop
