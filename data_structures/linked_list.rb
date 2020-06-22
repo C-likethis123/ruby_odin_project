@@ -27,6 +27,11 @@ class LinkedList
         size_of_node
     end
 
+    def prepend(value)
+        new_node = Node.new(value, @head.next_node)
+        @head.next_node = new_node
+    end
+
     def append(value)
         new_node = Node.new(value)
         @tail.next_node = new_node
