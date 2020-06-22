@@ -48,6 +48,20 @@ class LinkedList
         node
     end
 
+    def pop
+        if size == 1
+            @head.next_node = nil
+            @tail = @head
+        else
+            node = @head.next_node
+            while node.next_node.next_node
+                node = node.next_node
+            end
+            node.next_node = nil
+            @tail = node
+        end
+    end
+
     def to_s
         res = ""
         node = @head.next_node
