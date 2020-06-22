@@ -20,7 +20,7 @@ class LinkedList
     def size
         size_of_node = 0
         node = @head.next_node
-        unless node.nil?
+        while node
             node = node.next_node
             size_of_node += 1
         end
@@ -32,14 +32,14 @@ class LinkedList
         @tail.next_node = new_node
         @tail = new_node
     end
-end
 
-# test cases
-
-# size
-linked_list = LinkedList.new
-# linked_list.append(5)
-puts linked_list.size == 0
+    def to_s
+        res = ""
+        node = @head.next_node
+        while node
+            res += "( #{node.value} ) -> "
+            node = node.next_node
+        end
         res += "nil"
     end
 end
