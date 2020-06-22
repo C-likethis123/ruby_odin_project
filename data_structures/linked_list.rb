@@ -6,6 +6,7 @@ require './node.rb'
 class LinkedList
     def initialize
         @head = Node.new
+        @tail = @head
     end
 
     def head
