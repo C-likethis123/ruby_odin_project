@@ -1,0 +1,11 @@
+# frozen_string_literal: true
+
+# Represents a Node in a LinkedList
+class Node
+  attr_reader :value
+  attr_accessor :next_node
+  def initialize(value = nil, next_node = nil)
+    @value = value
+    @next_node = next_node
+  end
+end
