@@ -13,8 +13,7 @@ class LinkedList
         @head
     end
 
-    def append(value)
-        new_node = Node.new(value)
-        tail.next_node = new_node
+    def tail
+        @tail
     end
 end
