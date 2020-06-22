@@ -38,6 +38,16 @@ class LinkedList
         @tail
     end
 
+    def at(index)
+        n = 0
+        node = @head.next_node
+        while index != n
+            node = node.next_node
+            n += 1
+        end
+        node
+    end
+
     def to_s
         res = ""
         node = @head.next_node
