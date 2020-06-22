@@ -16,4 +16,12 @@ class LinkedList
     def tail
         @tail
     end
-end
+
+    def size
+        size_of_node = 0
+        node = @head
+        unless node.nil?
+            node = node.next_node
+            size_of_node += 1
+        end
+    end
