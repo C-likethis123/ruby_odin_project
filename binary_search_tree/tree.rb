@@ -15,4 +15,20 @@ class Tree
         med = arr.length / 2
         return Node.new(arr[med], build_tree(arr[0...med]), build_tree(arr[(med+1)..]))
     end
+
+    # Inserts a value in the tree
+    # Ignores duplicates
+    def insert(value, tree=@root)
+        if @root.value.nil?
+            @root.value == value
+        elsif value > tree.value
+            node.right.nil? 
+                ? node.right = Node.new(value)
+                : insert(value, tree.right)
+        elsif value < tree.value
+            node.left.nil? 
+                ? node.left = Node.new(value)
+                : insert(value, tree.left)
+        end 
+    end
 end
