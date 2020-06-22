@@ -62,6 +62,26 @@ class LinkedList
         end
     end
 
+    def contains?(value)
+        node = @head.next_node
+        while node
+            return true if node.value == value
+            node = node.next_node
+        end
+        return false
+    end
+
+    def find(value)
+        node = @head.next_node
+        index = 0
+        while node
+            return index if node.value == value
+            node = node.next_node
+            index += 1
+        end
+        return nil
+    end
+
     def to_s
         res = ""
         node = @head.next_node
@@ -92,3 +112,30 @@ puts linked_list.to_s == "( 2 ) -> ( 5 ) -> ( 9 ) -> nil"
 
 # to_s
 puts linked_list.to_s
+
+# at
+
+puts linked_list.at(0).value == 2
+puts linked_list.at(1).value == 5
+
+# finds
+puts linked_list.find(2) == 0
+puts linked_list.find(5) == 1
+puts linked_list.find(9) == 2
+puts linked_list.find(1) == nil
+
+# contains
+puts linked_list.contains?(2) == true
+puts linked_list.contains?(5) == true
+puts linked_list.contains?(1) == true
+
+#pop
+linked_list.pop
+puts linked_list.to_s == "( 2 ) -> ( 5 ) -> nil"
+linked_list.pop
+puts linked_list.to_s == "( 2 ) -> nil"
+puts linked_list.contains?(9) == false
+linked_list.pop
+puts linked_list.to_s == "nil"
+puts linked_list.contains?(1) == false
+puts linked_list.find(1) == nil
