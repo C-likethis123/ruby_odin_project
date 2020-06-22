@@ -20,7 +20,7 @@ class LinkedList
     def size
         size_of_node = 0
         node = @head.next_node
-        while node
+        unless node.nil?
             node = node.next_node
             size_of_node += 1
         end
@@ -29,7 +29,8 @@ class LinkedList
 
     def append(value)
         new_node = Node.new(value)
-        tail.next_node = new_node
+        @tail.next_node = new_node
+        @tail = new_node
     end
 end
 
