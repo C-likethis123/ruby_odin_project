@@ -5,7 +5,7 @@ RSpec.describe Board do
   def new_board(arr)
     board = Board.new
     arr.each_with_index { |elem, index| board.add_to_grid(elem, index + 1) if elem.instance_of?(String) }
-    return board
+    board
   end
 
   describe '#new' do

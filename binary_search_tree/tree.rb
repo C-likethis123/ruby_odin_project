@@ -31,4 +31,12 @@ class Tree
                 : insert(value, tree.left)
         end 
     end
+
+    private def no_children?(node)
+        node.left.nil? && node.right.nil?
+    end
+
+    def delete(value, tree=@root)
+    end
+
 end
